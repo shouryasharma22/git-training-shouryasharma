@@ -1,0 +1,6 @@
+Commands-
+
+git merge another-piece-of-work
+echo 2+3=5 > equation.txt
+git add equation.txt
+git commit --no-edit
