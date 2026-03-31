@@ -1,0 +1,171 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Shourya Sharma Portfolio Website</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:ital,wght@0,100..800;1,100..800&display=swap" rel="stylesheet">
+  <script src="https://cdn.tailwindcss.com"></script>
+  <style>
+    * { font-family: 'JetBrains Mono', monospace; }
+  </style>
+</head>
+<body class="bg-[#5a5a5a] text-white min-h-screen overflow-x-hidden">
+  <div class="flex flex-col md:flex-row items-stretch justify-between bg-gray-950 border-b border-[#444] w-full" id="homepage">
+    <div class="flex items-center px-6 py-4 text-[#f5c518] font-bold text-4xl md:text-5xl tracking-tight shrink-0">
+      &lt;SS&gt;
+    </div>
+    <div class="flex flex-wrap justify-center md:ml-auto">
+      <a href="#projects" class="flex items-center justify-center px-4 md:px-10 py-4 text-sm md:text-base text-white font-semibold transition-colors hover:bg-[#f5c518] hover:text-black ">Projects</a>
+      <a href="https://github.com/shouryasharma22" target="_blank" rel="noopener noreferrer" class="flex items-center justify-center px-4 md:px-10 py-4 text-sm md:text-base text-white font-semibold transition-colors hover:bg-[#f5c518] hover:text-black ">Github</a>
+      <a href="https://www.linkedin.com/in/shourya-sharma-65bb99396" target="_blank" rel="noopener noreferrer" class="flex items-center justify-center px-4 md:px-10 py-4 text-sm md:text-base text-white font-semibold transition-colors hover:bg-[#f5c518] hover:text-black">LinkedIn</a>
+      <a href="#contact" class="flex items-center justify-center px-4 md:px-10 py-4 text-sm md:text-base text-white font-semibold transition-colors hover:bg-[#f5c518] hover:text-black">Contact</a>
+    </div>
+  </div>
+
+  <section class="flex flex-col md:flex-row items-center gap-5 px-6 md:px-12 py-12 md:py-16 bg-gray-900 min-h-screen">
+    <div class="max-w-6xl mx-auto flex flex-col md:flex-row items-center gap-10 md:gap-16 justify-center w-full">
+      <div class="flex-1 text-center md:text-left">
+        <p class="mb-3">Hi, I'm</p>
+        <h1 class="text-[#f5c518] text-4xl md:text-7xl font-extrabold mb-6 leading-tight">Shourya Sharma</h1>
+        <p class="text-white text-xl md:text-4xl mb-6">CSE Undergrad @NITK</p>
+        <p class="text-white text-base md:text-lg my-6 max-w-md mx-auto md:mx-0">
+          I build clean, responsive web interfaces and enjoy solving real-world problems through code.
+        </p>
+        <div class="flex justify-center md:justify-start gap-4 mb-6">
+          <a href="#skills" class="px-6 py-3 bg-black text-white font-semibold rounded-full   hover:bg-[#f5c518] hover:text-black transition-all">&lt;Skills&gt;</a>
+          <a href="#projects" class="px-6 py-3 bg-black text-white font-semibold rounded-full  hover:bg-[#f5c518] hover:text-black transition-all">&lt;Projects&gt;</a>
+        </div>
+      </div>
+    <div class="flex-1 flex justify-center relative">
+      <img src="../image.png"
+        class="w-64 h-64 md:w-80 md:h-80 rounded-full object-top-cover relative z-10" />
+      <div class="top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 absolute w-72 h-72 md:w-96 md:h-96 bg-[#f5c518] blur-3xl opacity-25 rounded-full"></div>
+    </div>
+  </section>
+
+  <section class="px-6 md:px-12 py-16 bg-[#242222] border-t border-gray-500">
+    <div class="max-w-6xl mx-auto">
+      <h2 class="text-[#f5c518] text-4xl md:text-5xl font-extrabold mb-8 text-center md:text-left">About-</h2>
+      <div class="flex flex-col md:flex-row items-center justify-between gap-10">
+        <div class="mx-auto text-white text-lg md:text-2xl leading-relaxed w-full md:w-1/2 text-center md:text-left">
+          I'm a Computer Science undergraduate at NITK with a strong interest in web development. 
+          I enjoy building clean, responsive interfaces and continuously improving my skills.
+        </div>
+    </div>
+  </section>
+
+  <section id="projects" class="w-full py-16 px-6 md:px-12 bg-gray-900 border-t border-gray-500">
+    <div class="max-w-6xl mx-auto">
+      <h2 class="text-[#f5c518] text-4xl md:text-5xl font-extrabold mb-10 text-center md:text-left">Projects-</h2>
+      <div class="flex flex-col md:flex-row justify-center gap-8">
+        <div class="flex-1 p-6 bg-white/5 border border-gray-800 rounded-xl hover:-translate-y-2 transition duration-300">
+          <h3 class="text-white text-xl font-semibold mb-2">• Weather App</h3>
+          <p class="text-gray-300 text-sm mb-4">Displays real-time weather data of any city by fetching data from an API.</p>
+          <p class="text-xs text-[#f5c518] font-bold">TECH: HTML • CSS • JS</p>
+        </div>
+        <div class="flex-1 p-6 bg-white/5 border border-gray-800 rounded-xl hover:-translate-y-2 transition duration-300">
+          <h3 class="text-white text-xl font-semibold mb-2">• Number Guesser</h3>
+          <p class="text-gray-300 text-sm mb-4">A random number game with hints and try limits.</p>
+          <p class="text-xs text-[#f5c518] font-bold">TECH: HTML • CSS • JS</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="skills" class="px-6 md:px-12 py-16 bg-[#242222] border-t border-gray-500">
+    <div class="max-w-6xl mx-auto">
+      <h2 class="text-[#f5c518] text-4xl md:text-5xl font-extrabold mb-10">Skills-</h2>
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-8 text-lg">
+        <div><p class="text-white font-semibold">• Frontend</p><p class="text-gray-400 pl-5">[HTML] [CSS] [JS] [React] [Tailwind]</p></div>
+        <div><p class="text-white font-semibold">• Programming</p><p class="text-gray-400 pl-5">[C++] [JavaScript]</p></div>
+        <div><p class="text-white font-semibold">• Tools</p><p class="text-gray-400 pl-5">[Git] [GitHub] [VS Code]</p></div>
+        <div><p class="text-white font-semibold">• Concepts</p><p class="text-gray-400 pl-5">[Responsive Design] [Problem Solving]</p></div>
+      </div>
+    </div>
+  </section>
+
+  <section id="contact" class="px-12 py-16 bg-gray-900 border-t border-gray-500">
+    <div class="max-w-6xl mx-auto">
+      <h2 class="text-[#f5c518] text-5xl font-extrabold mb-10">Contact Me</h2>
+      <div class="space-y-4 text-xl">
+        <p class="text-white">-Email ID- shourya.251cs257@nitk.edu.in</p>
+        <p class="text-white">-Phone No- 9341477158</p>
+ 
+        <div class="mt-6">
+          <p class="text-white mb-3">-Drop a message here-</p>
+          <div class="bg-[#3a3a3a] rounded-lg overflow-hidden mx-auto w-full max-w-2xl">
+ 
+   
+            <div class="flex items-center gap-1 px-3 py-2 bg-[#3a3a3a] ">
+ 
+              <button  title="Bold"
+                class="w-8 h-8 flex items-center justify-center rounded text-white font-bold text-sm hover:bg-[#f5c518] hover:text-black transition-colors duration-100">
+                B
+              </button>
+ 
+              <button  title="Italic"
+                class="w-8 h-8 flex items-center justify-center rounded text-white itazlic text-sm hover:bg-[#f5c518] hover:text-black transition-colors duration-100">
+                I
+              </button>
+ 
+              <button  title="Code"
+                class="w-8 h-8 flex items-center justify-center rounded text-white text-xs font-mono hover:bg-[#f5c518] hover:text-black transition-colors duration-100">
+                &lt;/&gt;
+              </button>
+ 
+              <button title="Insert Link"
+                class="w-8 h-8 flex items-center justify-center rounded text-white hover:bg-[#f5c518] hover:text-black transition-colors duration-100">
+                &#128279;
+              </button>
+ 
+              <label title="Attach File / Image"
+                class="w-8 h-8 flex items-center justify-center rounded text-white hover:bg-[#f5c518] hover:text-black transition-colors duration-100 cursor-pointer">
+                &#128206;
+                <input type="file" class="hidden"  accept="image/*,.pdf,.doc,.docx,.txt"/>
+              </label>
+              
+              <!--I took Link and image upload logos code from chatgpt -->
+
+              <button  id="preview-btn" title="Preview"
+                class="px-3 h-8 flex items-center justify-center rounded text-white text-xs font-semibold hover:bg-[#f5c518] hover:text-black transition-colors duration-100">
+                Preview
+              </button>
+ 
+            </div>
+            
+            <div id="write-area">
+              <textarea
+                id="msg-editor"
+                placeholder="Write your message here..."
+                class="w-full bg-[#3a3a3a] text-white p-4 resize-none h-44 outline-none font-mono leading-relaxed"
+              ></textarea>
+            </div>
+ 
+        
+            <div class="flex items-center justify-between px-4 py-2 bg-[#3a3a3a] ">
+              <button class="px-5 py-1.5 bg-[#f5c518] text-black font-bold text-sm flex-grow rounded hover:bg-yellow-300 transition-colors ml-auto">
+                Send
+              </button>
+            </div>
+            
+          </div>
+
+        </div>
+      </div>
+    </div>
+
+  </section>
+    <footer class="text-center text-sm text-gray-400 h-200px flex flex-col justify-end gap-4 pb-6  bg-gray-950 border-gray-500 border-t">
+        <div class="flex justify-evenly text-lg items-center gap-6 my-5 ">
+            <a href="#projects" class="hover:underline">Projects</a>   
+            <a href="#skills" class="hover:underline">Skills</a> 
+            <a href="https://github.com/shouryasharma22" target="_blank" rel="noopener noreferrer" class="hover:underline">GitHub</a>    
+            <a href="#contact" class="hover:underline">Contact Me</a>    
+        </div>
+      © 2026 Shourya Sharma. All rights reserved.
+      </footer>
+</body>
+</html>
