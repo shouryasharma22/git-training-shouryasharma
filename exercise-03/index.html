@@ -1,0 +1,144 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>TILE MATCH</title>
+<script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
+<style type="text/tailwindcss">
+  .card img { display: none; }
+  .card.revealed img { display: block; }
+  .card.revealed .cover { display: none; }
+</style>
+</head>
+<body class="font-mono bg-[#111] text-[#eee] min-h-screen flex items-start justify-center px-4 py-8">
+
+<div class="w-full max-w-105">
+
+  <div class="flex justify-between items-center mb-6">
+    <div class="text-xl font-semibold tracking-tight text-white">TILE MATCH</div>
+    <div class="flex gap-4 text-[13px] text-[#888]">
+      moves: <span id="moves" class="font-semibold text-white">0</span>
+      &nbsp; matches: <span id="matches" class="font-semibold text-white">0</span>/8
+    </div>
+  </div>
+
+  <div class="mb-5">
+    <button id="nnewGameButton"
+      class="font-mono text-[13px] px-5 py-2 rounded-lg border border-[#333] bg-[#1a1a1a] text-[#eee] cursor-pointer hover:bg-[#222]">
+      new game
+    </button>
+  </div>
+
+  <div id="board" class="grid grid-cols-4 gap-2"></div>
+
+  <div id="message" class="text-center text-[15px] font-semibold min-h-[1.6rem] mt-5 text-[#888]"></div>
+
+</div>
+
+<script>
+const FRUITS = [
+  { name: 'apple',      src: 'https://cdn.jsdelivr.net/gh/twitter/twemoji@latest/assets/72x72/1f34e.png' },
+  { name: 'banana',     src: 'https://cdn.jsdelivr.net/gh/twitter/twemoji@latest/assets/72x72/1f34c.png' },
+  { name: 'grapes',     src: 'https://cdn.jsdelivr.net/gh/twitter/twemoji@latest/assets/72x72/1f347.png' },
+  { name: 'watermelon', src: 'https://cdn.jsdelivr.net/gh/twitter/twemoji@latest/assets/72x72/1f349.png' },
+  { name: 'strawberry', src: 'https://cdn.jsdelivr.net/gh/twitter/twemoji@latest/assets/72x72/1f353.png' },
+  { name: 'lemon',      src: 'https://cdn.jsdelivr.net/gh/twitter/twemoji@latest/assets/72x72/1f34b.png' },
+  { name: 'peach',      src: 'https://cdn.jsdelivr.net/gh/twitter/twemoji@latest/assets/72x72/1f351.png' },
+  { name: 'pineapple',  src: 'https://cdn.jsdelivr.net/gh/twitter/twemoji@latest/assets/72x72/1f34d.png' },
+];
+
+let state = { cards: [], flipped: [], matched: new Set(), moves: 0, locked: false };
+
+function shuffle(arr) {
+  for (let i = arr.length - 1; i > 0; i--) {
+    const j = Math.floor(Math.random() * (i + 1));
+    [arr[i], arr[j]] = [arr[j], arr[i]];
+  }
+  return arr;
+}
+
+function newGame() {
+  const deck = shuffle([...FRUITS, ...FRUITS]);
+  state = {
+    cards: deck.map((fruitname, i) => ({ id: i, fruit: fruitname})),
+    flipped: [],
+    matched: new Set(),
+    moves: 0,
+    locked: false
+  };
+  render();
+  document.getElementById('moves').textContent = 0;
+  document.getElementById('matches').textContent = 0;
+  document.getElementById('message').textContent = '';
+}
+
+function render() {
+  const board = document.getElementById('board');
+  board.innerHTML = '';
+  state.cards.forEach((card, i) => {
+    const card1 = document.createElement('div');
+    card1.className = 'card aspect-square cursor-pointer rounded-lg border border-[#2a2a2a] bg-[#1a1a1a] flex items-center justify-center select-none hover:bg-[#222]';
+    card1.dataset.index = i;
+    card1.innerHTML = `
+      <img src="${card.fruit.src}" alt="${card.fruit.name}" class="w-14 h-14 object-contain">
+    `;
+    card1.addEventListener('click', () => handleFlip(i));
+    board.appendChild(card1);
+  });
+}
+
+function checkReveal(i) { return document.querySelector(`.card[data-index="${i}"]`); }
+
+function handleFlip(i) {
+  if (state.locked) return;
+  if (state.matched.has(i)) return;
+  if (state.flipped.includes(i)) return;
+  if (state.flipped.length === 2) return;
+
+  state.flipped.push(i);
+  checkReveal(i).classList.add('revealed');
+
+  if (state.flipped.length === 2) {
+    state.moves++;
+    document.getElementById('moves').textContent = state.moves;
+    checkMatch();
+  }
+}
+
+function checkMatch() {
+  const [a, b] = state.flipped;
+  if (state.cards[a].fruit.name === state.cards[b].fruit.name) {
+    state.matched.add(a);
+    state.matched.add(b);
+    const cardA = checkReveal(a)
+    const cardB = checkReveal(b);
+    cardA.classList.add('matched');
+    cardB.classList.add('matched');
+    cardA.classList.remove('bg-[#1a1a1a]', 'hover:bg-[#222]', 'border-[#2a2a2a]', 'cursor-pointer');
+    cardB.classList.remove('bg-[#1a1a1a]', 'hover:bg-[#222]', 'border-[#2a2a2a]', 'cursor-pointer');
+    cardA.classList.add('bg-[#0a2e22]', 'border-[#1D9E75]', 'cursor-default');
+    cardB.classList.add('bg-[#0a2e22]', 'border-[#1D9E75]', 'cursor-default');
+    state.flipped = [];
+    document.getElementById('matches').textContent = state.matched.size / 2;
+    if (state.matched.size === 16) {
+      setTimeout(() => {
+        document.getElementById('message').textContent = `solved in ${state.moves} moves!`;
+      }, 200);
+    }
+  } else {
+    state.locked = true;
+    setTimeout(() => {
+      checkReveal(a).classList.remove('revealed');
+      checkReveal(b).classList.remove('revealed');
+      state.flipped = [];
+      state.locked = false;
+    }, 800);
+  }
+}
+
+document.getElementById('nnewGameButton').addEventListener('click', newGame);
+newGame();
+</script>
+</body>
+</html>
